@@ -1,5 +1,5 @@
 # CCDCGAN-for-multicomponent-system
-The purpose of this code is to extend the functionality by T. Long, et al. "Constrained crystals deep convolutional generative adversarial network for the inverse design of crystal structures." npj Computational Materials 7.1 (2021): 1-7 in order to design new crystal structures of systems other than only the Bi-Se system. Please feel free to contact the conresponding author Prof. Hongbin Zhang (hzhang@tmm.tu-darmstadt.de) or Teng Long (tenglong@tmm.tu-darmstadt.de) for discussions on the original codebase.
+The purpose of this code is to extend the functionality of the codebase by `T. Long, et al. "Constrained crystals deep convolutional generative adversarial network for the inverse design of crystal structures." npj Computational Materials 7.1 (2021): 1-7` in order to design new crystal structures of multicomponent systems. Please feel free to contact the conresponding author Prof. Hongbin Zhang (hzhang@tmm.tu-darmstadt.de) or Teng Long (tenglong@tmm.tu-darmstadt.de) for discussions on the original codebase.
 
 The original codebase is linked [here](https://github.com/TengLong1993/CCDCGAN-for-single-system/tree/main).
 
