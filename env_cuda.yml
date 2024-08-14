@@ -1,0 +1,15 @@
+name: ccdcgan
+channels:
+  - conda-forge
+dependencies:
+    - python=3.9
+    - pip>=19.0
+    - tensorflow-deps
+    - scikit-learn
+    - ase
+    - joblib
+    - pandas
+    - pip:
+        - tensorflow[and-cuda]==2.9
+        - mp_api
+        - alignn
