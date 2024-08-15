@@ -8,7 +8,7 @@ To prepare the conda environment, use either the env_metal.yml, env.yml, or env_
 ```conda env create -f [CHOSEN_ENV].yml```
 
 Then activate the environment by running:
-``` conda activate [NAME OF ENVIRONMENT]```
+```conda activate [NAME OF ENVIRONMENT]```
 
 ## Instructions of running
 1. Make sure your data is provided in a CSV file with a CIF column including all of the CIF data
