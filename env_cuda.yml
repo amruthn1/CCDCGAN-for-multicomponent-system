@@ -12,3 +12,4 @@ dependencies:
         - tensorflow[and-cuda]==2.9
         - mp_api
         - alignn
+        - smact

@@ -2,6 +2,7 @@ import subprocess, os
 from mp_api.client import MPRester
 from ase.io import read
 import json
+from pymatgen_testing import evaluate_cif_files
 
 f = open("./config.json")
 config = json.load(f)
@@ -44,6 +45,7 @@ def identify_duplicates():
                 os.system("rm ./save/generated_crystal_for_check/" + file) 
 
            
-
-identify_duplicates()
-filter_by_fEV()
+if __name__ == "__main__":
+    identify_duplicates()
+    filter_by_fEV()
+    evaluate_cif_files()

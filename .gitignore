@@ -7,3 +7,5 @@ save_backup/
 database/
 calculation/
 temp/
+.DS_Store
+validity_results.csv
