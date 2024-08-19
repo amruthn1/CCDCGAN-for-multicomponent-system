@@ -122,9 +122,9 @@ class Crystal(object):
 
 def evaluate_cif_files():
     validity_results = []
-    for cif in os.listdir("./synthesizable"):
+    for cif in os.listdir("./stable"):
         try:
-            f = open("./synthesizable/" + cif, "r")
+            f = open("./stable/" + cif, "r")
             cif_str = f.read()
             structure = Structure.from_str(cif_str, fmt="cif")
             crystal = Crystal({

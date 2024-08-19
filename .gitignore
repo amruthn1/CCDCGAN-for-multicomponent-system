@@ -1,7 +1,4 @@
-theoretically_metastable/
-theoretically_metastable_backup/
-synthesizable/
-synthesizable_backup/
+stable/
 save/
 save_backup/
 database/
