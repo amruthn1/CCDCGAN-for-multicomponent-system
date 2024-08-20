@@ -51,7 +51,7 @@ class CCDCGAN:
 
         band_gap = self.constrain(img)
 
-        self.final_combined = Model(inputs=z, outputs=[valid, formation_energy])
+        self.final_combined = Model(inputs=z, outputs=[valid, formation_energy, band_gap])
 
         losses = ["binary_crossentropy", min_formation_energy, max_band_gap]  ##max_band_gap
         lossWeights = [1.0, 0.1, 0.1]
@@ -201,7 +201,7 @@ class CCDCGAN:
             d_loss_fake = self.discriminator.train_on_batch(gen_imgs, fake)
             d_loss = 0.5 * np.add(d_loss_real, d_loss_fake)
 
-            g_loss = self.final_combined.train_on_batch(noise, [valid, valid])
+            g_loss = self.final_combined.train_on_batch(noise, [valid, valid, valid])
 
             print(
                 "%d [D loss: %f, acc.: %.2f%%] [G loss: %f, from generator: %f, from constrain: %f] "

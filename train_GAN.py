@@ -106,7 +106,7 @@ import gan.ccdcgan as gan
 
 ccdcgan = gan.CCDCGAN()
 ccdcgan.train(
-    epochs=10000,
+    epochs=100000,
     save_interval=5000,
     GAN_calculation_folder_path=GAN_calculation_folder_path,
     X_train_name="train_X.npy",
