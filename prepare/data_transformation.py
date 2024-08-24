@@ -437,10 +437,13 @@ def reconstruction(image, ele):
     recon_mat = Atoms(cell=15 * np.identity(3), pbc=[1, 1, 1])
     (peak_x, peak_y, peak_z) = np.where(peaks == 1.0)
     index = 0
+    temp_dict = []
     for px, py, pz in zip(peak_x, peak_y, peak_z):
         index += 1
         if np.sum(image[px - 1 : px + 6, py - 1 : py + 6, pz - 1 : pz + 6] > 0) > 0:
-            if px / 64.0 < 0.5 and index % 100 == 0:
+            if index % 15 == 0 and [px, py, pz] not in temp_dict:
+                temp_dict.append([px, py, pz])
+                print(px/64, py/64, pz/64)
                 recon_mat.append(Atom(ele, (px / 64.0, py / 64.0, pz / 64.0)))
     pos = recon_mat.get_positions()
     recon_mat.set_scaled_positions(pos)

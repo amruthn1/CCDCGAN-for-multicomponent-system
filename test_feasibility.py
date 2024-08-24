@@ -3,25 +3,11 @@ from mp_api.client import MPRester
 from ase.io import read
 import json
 from pymatgen_testing import evaluate_cif_files
+from custom_test import predict_and_save_to_csv
+import pandas as pd
 
 f = open("./config.json")
 config = json.load(f)
-
-def filter_by_fEV():
-    stable = 0
-
-    if not os.path.exists("./stable"):
-        os.makedirs("./stable")
-
-    for filename in os.listdir("./save/generated_crystal_for_check"):
-        x = subprocess.check_output("python ./alignn/alignn/pretrained.py --model_name jv_formation_energy_peratom_alignn --file_format cif --file_path ./save/generated_crystal_for_check/" + filename, shell=True)
-        formation_energy = float(((str(x).split("[")[2]).split("]"[0]))[0])
-        print(formation_energy)
-        if (formation_energy < 0):
-            stable+=1
-            print(filename)
-            os.system("cp ./save/generated_crystal_for_check/" + filename + " ./stable/" + filename)
-    print("Stable: " + str(stable))
 
 def identify_duplicates():
     for file in os.listdir("./save/generated_crystal_for_check"):
@@ -35,5 +21,16 @@ def identify_duplicates():
 
 if __name__ == "__main__":
     identify_duplicates()
-    filter_by_fEV()
+    cif_directory = "./save/generated_crystal_for_check/"
+    output_csv = "./output.csv"
+    predict_and_save_to_csv(cif_directory, output_csv)
+    df = pd.read_csv("./output.csv")
+
+    print(df[(df['Formation Energy (eV/atom)'] < -1.5) &
+                 (df['Energy Above Hull (eV/atom)'] < 0.08)])
+
+    filtered_df = df[(df['Formation Energy (eV/atom)'] < -1.5) &
+                 (df['Energy Above Hull (eV/atom)'] < 0.08)]
+    output_path = './filtered_structures_unconditional.csv'
+    filtered_df.to_csv(output_path, index=False)
     evaluate_cif_files()
